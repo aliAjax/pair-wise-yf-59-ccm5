@@ -7,7 +7,8 @@
     "dev": "vite --host 0.0.0.0 --port 62024",
     "build": "tsc -b && vite build",
     "preview": "vite preview --host 0.0.0.0 --port 62024",
-    "check": "tsc -b --pretty false"
+    "check": "tsc -b --pretty false",
+    "test": "esbuild test/e2e.ts test/migration.ts --bundle --format=esm --platform=node --outdir=node_modules/.tmp/test --out-extension:.js=.mjs --log-level=silent && node node_modules/.tmp/test/e2e.mjs && node node_modules/.tmp/test/migration.mjs"
   },
   "dependencies": {
     "@ant-design/icons": "^6.1.0",
@@ -27,6 +28,7 @@
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.2",
     "@vitejs/plugin-react": "^5.1.4",
+    "esbuild": "^0.28.2",
     "typescript": "^5.9.3",
     "vite": "^7.2.7"
   }
